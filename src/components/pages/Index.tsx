@@ -224,7 +224,8 @@ const Index = () => {
                 </div>
               ))}
             </div>
-
+            
+            {/* View All Services Button */}
             <div className="text-center">
               <Link
                 to="/services"

@@ -1,188 +1,97 @@
-import { useState } from "react";
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import React from 'react';
+import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import Navbar from "../ui/Navbar";
 import Footer from "../ui/Footer";
-import { toast } from "sonner";
-import ReCAPTCHA from "react-google-recaptcha";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    topic: "",
-    message: "",
-  });
-  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!captchaValue) {
-      toast.error("Please complete the CAPTCHA");
-      return;
-    }
-    console.log("Form submitted:", formData);
-    toast.success("Message sent successfully! We'll get back to you soon.");
-    setFormData({ name: "", email: "", topic: "", message: "" });
-    setCaptchaValue(null);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleCaptchaChange = (value: string | null) => {
-    setCaptchaValue(value);
-  };
-
   return (
-    <div className="min-vh-100 d-flex flex-column">
+    <main>
       <Navbar />
-      
-      <main className="flex-grow-1">
-        <section className="py-5">
-          <div className="container">
-            <h2 className="h1 text-center mb-5 text-primary">
-              Contact Us
-            </h2>
-            <div className="row g-4">
-              {/* Contact Information */}
-              <div className="col-md-6">
-                <h2 className="h4 text-primary mb-4">Get in Touch</h2>
-                <div className="d-flex flex-column gap-4">
-                  <div className="d-flex gap-3">
-                    <MapPin className="text-primary flex-shrink-0" />
-                    <div>
-                      <h3 className="h6 mb-2">Address</h3>
-                      <p className="text-muted mb-0">
-                        36 Goodenia Ave<br />
-                        Manor Lakes VIC 3024
-                      </p>
-                    </div>
-                  </div>
+      {/* Hero Section */}
+      <section className="bg-primary text-white py-5">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-8 mx-auto text-center">
+              <h1 className="display-4 fw-bold mb-4">Contact Us</h1>
+              <p className="lead mb-0">
+                We're here to help with all your home care needs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                  <div className="d-flex gap-3">
-                    <Phone className="text-primary flex-shrink-0" />
-                    <div>
-                      <h3 className="h6 mb-2">Phone</h3>
-                      <p className="text-muted mb-0">1300 033 635</p>
-                    </div>
-                  </div>
-
-                  <div className="d-flex gap-3">
-                    <Mail className="text-primary flex-shrink-0" />
-                    <div>
-                      <h3 className="h6 mb-2">Email</h3>
-                      <p className="text-muted mb-0">info@synergyhomecare.com</p>
-                    </div>
-                  </div>
-
+      {/* Contact Content */}
+      <section className="py-5">
+        <div className="container">
+          <div className="row g-4">
+            {/* Contact Information */}
+            <div className="col-md-6">
+              <h2 className="h3 text-primary mb-4">Get in Touch</h2>
+              <div className="d-flex flex-column gap-4">
+                <div className="d-flex gap-3">
+                  <MapPin className="text-primary flex-shrink-0" />
                   <div>
-                  <h2 className="h4 text-primary mb-4">Follow Us</h2>
-                    <div className="d-flex gap-3">
-                      <a href="#" className="text-primary">
-                        <Facebook size={24} />
-                      </a>
-                      <a href="#" className="text-primary">
-                        <Twitter size={24} />
-                      </a>
-                      <a href="#" className="text-primary">
-                        <Instagram size={24} />
-                      </a>
-                    </div>
+                    <h3 className="h6 mb-2">Address</h3>
+                    <p className="text-muted mb-0">
+                      36 Goodenia Ave, Manor Lakes VIC 3024
+                    </p>
                   </div>
                 </div>
-              </div>
 
-              {/* Contact Form */}
-              <div className="col-md-6">
-                <div className="card shadow-sm">
-                  <div className="card-body">
-                    <h2 className="h3 text-primary mb-4">Send Us a Message</h2>
-                    <form onSubmit={handleSubmit}>
-                      <div className="mb-3">
-                        <label htmlFor="name" className="form-label">Name</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="name"
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
+                <div className="d-flex gap-3">
+                  <Phone className="text-primary flex-shrink-0" />
+                  <div>
+                    <h3 className="h6 mb-2">Phone</h3>
+                    <p className="text-muted mb-0">1300 033 635</p>
+                  </div>
+                </div>
 
-                      <div className="mb-3">
-                        <label htmlFor="email" className="form-label">Email</label>
-                        <input
-                          type="email"
-                          className="form-control"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          required
-                        />
-                      </div>
+                <div className="d-flex gap-3">
+                  <Mail className="text-primary flex-shrink-0" />
+                  <div>
+                    <h3 className="h6 mb-2">Email</h3>
+                    <a href="mailto:info@synergyhomecare.com">info@synergyhomecare.com</a>
+                  </div>
+                </div>
 
-                      <div className="mb-3">
-                        <label htmlFor="topic" className="form-label">Topic</label>
-                        <select
-                          className="form-select"
-                          id="topic"
-                          name="topic"
-                          value={formData.topic}
-                          onChange={handleChange}
-                          required
-                        >
-                          <option value="">Select a topic</option>
-                          <option value="general">General Inquiry</option>
-                          <option value="services">Services</option>
-                          <option value="pricing">Pricing</option>
-                          <option value="other">Other</option>
-                        </select>
-                      </div>
-
-                      <div className="mb-3">
-                        <label htmlFor="message" className="form-label">Message</label>
-                        <textarea
-                          className="form-control"
-                          id="message"
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange}
-                          required
-                          rows={4}
-                        ></textarea>
-                      </div>
-
-                      <div className="mb-3">
-                        <ReCAPTCHA
-                          sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-                          onChange={handleCaptchaChange}
-                        />
-                      </div>
-
-                      <button
-                        type="submit"
-                        className="btn btn-primary w-100"
-                      >
-                        Send Message
-                      </button>
-                    </form>
+                <div className="d-flex gap-3">
+                  <Clock className="text-primary flex-shrink-0" />
+                  <div>
+                    <h3 className="h6 mb-2">Working Hours</h3>
+                    <p className="text-muted mb-0"><strong>Monday:</strong> 9am - 5pm</p>
+                    <p className="text-muted mb-0"><strong>Tuesday:</strong> 9am - 5pm</p>
+                    <p className="text-muted mb-0"><strong>Wednesday:</strong> 9am - 5pm</p>
+                    <p className="text-muted mb-0"><strong>Thursday:</strong> 9am - 5pm</p>
+                    <p className="text-muted mb-0"><strong>Friday:</strong> 9am - 5pm</p>
+                    <p className="text-muted mb-0"><strong>Saturday:</strong> Closed</p>
+                    <p className="text-muted mb-0"><strong>Sunday:</strong> Closed</p>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Map */}
+            <div className="col-md-6">
+              <div className="card shadow-sm h-100">
+                <div className="card-body p-0">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.5956369442565!2d144.5875741758879!3d-37.869750871961564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad69abfa88a1f6f%3A0x3394b26ce7a937f5!2s36%20Goodenia%20Ave%2C%20Manor%20Lakes%20VIC%203024!5e0!3m2!1sen!2sau!4v1740889362096!5m2!1sen!2sau"
+                    width="100%"
+                    height="450"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                    title="Synergy Home Care Location"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
       <Footer />
-    </div>
+    </main>
   );
 };
 

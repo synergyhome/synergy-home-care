@@ -60,25 +60,34 @@ const Services = () => {
       <Navbar />
       
       <main className="flex-grow-1">
+        {/* Hero Section */}
+        <section className="bg-primary text-white py-5">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-8 mx-auto text-center">
+                <h1 className="display-4 fw-bold mb-4">Our Services</h1>
+                <p className="lead mb-0">
+                  We recognize that each client has unique disabilities and individual needs. Share your needs and plans with us, and we will pair you with the ideal caregiver to meet all your home care needs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
         {/* Services Section */}
         <section className="py-5">
           <div className="container px-4">
-            <h2 className="h1 text-center mb-4 text-primary">
-              Our Range Of Services Include
-            </h2>
-            <p className="text-left mb-4 text-muted mx-auto">
-              We recognize that each client has unique disabilities and individual needs. That’s why we customize our services to align with the specific goals and requirements of both clients and their families. Share your needs and plans with us, and we will pair you with the ideal caregiver to meet all your home care needs.
-            </p>
             <div className="row g-4">
               {services.map((service, index) => (
-                <div key={index} className="col-md-6 col-lg-4">
+                <div key={index} className="col-12 col-sm-6 col-md-6 col-lg-6">
                   <div className="card h-100 shadow-sm">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="card-img-top"
-                      style={{height: "200px", objectFit: "cover"}}
-                    />
+                    <div className="card-img-top-wrapper" style={{ height: "300px", overflow: "hidden" }}>
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="card-img-top"
+                        style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                      />
+                    </div>
                     <div className="card-body">
                       <h3 className="h5 card-title text-primary">{service.title}</h3>
                       <p className="card-text text-muted">{service.description}</p>
