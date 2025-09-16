@@ -50,7 +50,7 @@ const Contact = () => {
                   <Mail className="text-primary flex-shrink-0" />
                   <div>
                     <h3 className="h6 mb-2">Email</h3>
-                    <a href="mailto:info@synergyhomecare.com">info@synergyhcare.com.au</a>
+                    <a href="mailto:info@synergyhcare.com.au">info@synergyhcare.com.au</a>
                   </div>
                 </div>
 
