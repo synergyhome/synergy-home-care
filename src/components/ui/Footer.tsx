@@ -10,7 +10,7 @@ const Footer = () => {
             <p className="mb-1">36 Goodenia Ave</p>
             <p className="mb-1">Manor Lakes VIC 3024</p>
             <p className="mb-1">Phone: 1300 033 635</p>
-            <p>Email: info@synergyhomecare.com</p>
+            <p>Email: info@synergyhcare.com.au</p>
           </div>
           
           <div className="col-md-4">
