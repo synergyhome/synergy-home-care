@@ -4,6 +4,7 @@
   --primary-color: #0EA5E9;
   --secondary-color: #9F1239;
   --accent-color: #D3E4FD;
+  color-scheme: only light;
 }
 
 body {
